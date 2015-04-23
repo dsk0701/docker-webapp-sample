@@ -31,4 +31,10 @@ db:
 cron:
   hostname: cron-01
   build: docker-cron
+  links:
+    - db:db
+  volumes:
+    - ~/backups:/backups
+  tty: true
+  stdin_open: true
 

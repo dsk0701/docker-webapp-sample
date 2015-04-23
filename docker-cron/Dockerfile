@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM postgres:9.3
 
 # Add script file to /
 COPY data_backup.sh /data_backup.sh
@@ -15,6 +15,6 @@ RUN chmod 0644 /etc/cron.d/*
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-# Run the command on container startup
-CMD cron && tail -f /var/log/cron.log
+# Set up environment variable for cron and run the command on container startup
+CMD printenv | awk '{print "export " $1}' > /container_environment.sh && cron && /bin/bash
 
