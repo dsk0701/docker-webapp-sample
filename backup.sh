@@ -2,7 +2,7 @@
 
 CONTAINER_BACKUP_DATA_DIR=/var/lib/postgresql/data
 CONTAINER_BACKUP_DIR=/backups
-BACKUP_FILE_NAME=`date +"%Y%m%d_%I%M"`
+BACKUP_FILE_NAME=`date +"%Y%m%d_%H%M"`
 HOST_BACKUP_DIR="$(pwd)/backup"
 
 STORAGE_CONTAINER_ID=`docker ps | grep storage | awk '{print $1}'`
