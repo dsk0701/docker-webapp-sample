@@ -39,22 +39,3 @@ docker run --rm --volumes-from ${STORAGE_CONTAINER_NAME} -v ${HOST_RESTORE_DIR}:
 echo "Starting other containers..."
 docker-compose up --no-recreate -d
 
-
-# ### 1
-# docker rm dockerwebappsample_storage_1
-# 
-# docker create -v /var/lib/postgresql/data --name dockerwebappsample_storage_1 dockerwebappsample_storage /bin/bash
-# 
-# docker run --rm --volumes-from dockerwebappsample_storage_1 -v $(pwd)/restore:/restore ubuntu tar zxvf /restore/backup-20150507_0832.tar.gz
-# 
-# docker-compose up --no-recreate -d
-# 
-# ### 2
-# docker rm dockerwebappsample_storage_1
-# 
-# docker-compose up -d storage
-# 
-# docker run --rm --volumes-from dockerwebappsample_storage_1 -v $(pwd)/restore:/restore ubuntu tar zxvf /restore/backup-20150507_0934.tar.gz
-# 
-# docker-compose up --no-recreate -d
-
